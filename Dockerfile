@@ -1,5 +1,5 @@
 FROM golang:latest
-WORKDIR ~/workspace
+WORKDIR /DesignPatternGo
 RUN apt-get update \
     && go get golang.org/x/tools/cmd/... \
     && go get golang.org/x/tools/gopls \
@@ -7,4 +7,4 @@ RUN apt-get update \
 RUN echo "alias ll='ls -alF'" >> ~/.bashrc
 RUN echo "alias ls='ls --color=auto'" >> ~/.bashrc
 
-ADD . ~/workspace
+ADD . /DesignPatternGo
