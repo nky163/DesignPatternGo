@@ -14,7 +14,7 @@ func main() {
 
 	it := bs.CreateIterator()
 	for it.HasNext() {
-		bk := it.Next()
+		bk := it.Next().(book.Book)
 		fmt.Println(bk.GetName())
 	}
 

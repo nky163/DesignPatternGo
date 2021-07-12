@@ -2,7 +2,7 @@ package book
 
 type Iterator interface {
 	HasNext() bool
-	Next() Book // ...
+	Next() interface{} // ...
 }
 
 type Aggregate interface {
@@ -21,6 +21,9 @@ func NewBookShelf(maxSize uint64) *BookShelf {
 	return &b
 }
 
+// Iteratorインターフェースを返す
+// BookShelfIteratorを返さないので、BookShelfを使う側でBookShelfの数え上げの実装に依存しない
+// 使う側は、it.HasNext(), it.Next() を使うだけ
 func (bs *BookShelf) CreateIterator() Iterator {
 	return &BookShelfIterator{bs, 0}
 }
@@ -57,7 +60,7 @@ func (bsi *BookShelfIterator) HasNext() bool {
 	return true
 }
 
-func (bsi *BookShelfIterator) Next() Book {
+func (bsi *BookShelfIterator) Next() interface{} {
 	b := bsi.bookShelf.GetBookAt(bsi.index)
 	bsi.index++
 	return *b
