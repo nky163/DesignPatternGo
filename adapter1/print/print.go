@@ -7,19 +7,20 @@ type Printer interface {
 	PrintStrong()
 }
 
-type Print struct {
-	*banner.Banner // 継承的な
+type PrintBanner struct {
+	*banner.Banner // 継承的な...
 }
 
-func NewPrint(string_ string) *Print {
-	p := &Print{banner.NewBanner(string_)}
+// Printerインターフェースを返すようにしてみた...
+func NewPrinter(string_ string) Printer {
+	p := &PrintBanner{banner.NewBanner(string_)}
 	return p
 }
 
-func (p *Print) PrintWeak() {
+func (p *PrintBanner) PrintWeak() {
 	p.ShowWithParen()
 }
 
-func (p *Print) PrintStrong() {
+func (p *PrintBanner) PrintStrong() {
 	p.ShowWithAster()
 }
