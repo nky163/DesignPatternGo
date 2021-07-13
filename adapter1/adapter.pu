@@ -1,11 +1,10 @@
 @startuml
-interface Print {
-	
+interface Printer {
 	PrintWeak()
 	PrintStrong()
 }
 
-User -> Print: Uses
+User -> Printer: Uses
 
 class PrintBanner {
 	PrintWeek()
