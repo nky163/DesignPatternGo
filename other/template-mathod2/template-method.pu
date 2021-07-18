@@ -1,0 +1,42 @@
+@startuml
+title Template-Method-Patter (One Time Password)
+interface iOtp {
+	genRandomOTP(int) string
+	saveOTPCache(string)
+	getMessage(string) string
+	sendNotification(string) error
+	publishMetrics()
+}
+
+class otp {
+	iOtp iOtp
+	genAndSendOTP()
+}
+
+iOtp <--o otp : インターフェースを\nフィールドに持つ
+
+class sms {
+	otp
+	genRandomOTP(int) string
+	saveOTPCache(string)
+	getMessage(string) string
+	sendNotification(string) error
+	publishMetrics()
+}
+
+iOtp <|-- sms: 実装
+otp <--o sms: embedded
+
+class email {
+	otp
+	genRandomOTP(int) string
+	saveOTPCache(string)
+	getMessage(string) string
+	sendNotification(string) error
+	publishMetrics()
+}
+
+iOtp <|-- email: 実装
+otp <--o email: embedded
+
+@enduml
