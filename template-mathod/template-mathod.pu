@@ -1,0 +1,74 @@
+@startuml
+title Method-Template
+
+namespace Golang {
+	interface printer {
+		open()
+		print()
+		close()
+	}
+	
+	interface Displaier {
+		Display()
+	}
+	
+	abstract abstractDisplay {
+		printer
+		Display()
+	}
+
+	class charDisplay {
+		abstractDisplay
+		
+		open()
+		print()
+		close()
+	}
+
+	class stringDisplay {
+		abstractDisplay
+		
+		open()
+		print()
+		close()
+		printLine()
+	}
+	
+	printer <-o abstractDisplay
+	abstractDisplay <--o charDisplay
+	abstractDisplay <--o stringDisplay
+	printer <|-- charDisplay
+	printer <|-- stringDisplay
+	Displaier <|-- abstractDisplay
+
+}
+
+namespace Java {
+	abstract AbstractDisplay {
+		{abstract} open()
+		{abstract} print()
+		{abstract} close()
+		display()
+	}
+	
+	class CharDisplay {
+		open()
+		print()
+		close()
+	}
+	
+	class StringDisplay {
+		open()
+		print()
+		close()
+		printLine()
+	}
+	
+	AbstractDisplay <|-- CharDisplay
+	AbstractDisplay <|-- StringDisplay
+	
+}
+
+
+
+@enduml
