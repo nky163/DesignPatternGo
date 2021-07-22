@@ -1,0 +1,41 @@
+@startuml
+
+namespace framework {
+	abstract Factory {
+		create()
+		createProduct()
+		registerProduct()
+	}
+
+	abstract Product {
+		use()
+	}
+
+	Factory -> Product: Creates
+
+}
+
+namespace idcard {
+	
+	class IDCardFactory {
+		owners
+		createProduct()
+		registerProduct()
+		getOwners()
+	}
+	
+	class IDCard {
+		owner
+		use()
+		getOwner()
+	}
+	
+	IDCardFactory -> IDCard: Creates
+}
+
+framework.Factory <|-- idcard.IDCardFactory
+framework.Product <|-- idcard.IDCard
+
+
+
+@enduml

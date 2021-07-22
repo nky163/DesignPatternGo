@@ -1,0 +1,14 @@
+Productはownerありきでいいのか、、、
+Create は ProductInterfaceを返す
+	使う側はUse()だけ使う想定
+	ConcreteFactoryとして、IDCardFactory以外のFactoryを追加したときに、Use()以外のメソッドもユーザが使痛い場合はうーん、、
+	
+factory-method を実装するためのメソッドをfactoryInterfaceに書いている
+	Creatorインターフェースに入れるのがよい？入れる理由がない気がする。うーん。。
+
+もろもろダメなので、いつか考えなおす。。
+frameworkパッケージでFactoryInterfaceのメソッドをプライベートにしたい
+プライベートにすると、idcard側で実装した時に見えない
+
+RegisterOwner で インターフェースで定義したGetOwner()が使えない
+レシーバうんぬんで引数が足りてない、？
