@@ -1,0 +1,8 @@
+@startuml
+class Singleton {
+	{static} singleton
+	- singleton()
+	{static} + GetInstance()
+}
+
+@enduml
