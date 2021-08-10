@@ -1,0 +1,2 @@
+Product interfaceを実装する構造体を、別パッケージにしたいが、
+その場合、Product interface の createClone()を満たせない。。
